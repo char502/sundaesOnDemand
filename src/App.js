@@ -1,11 +1,13 @@
 import './App.css';
 // import { useState } from 'react';
-import SummaryForm from './pages/summary/SummaryForm';
+// import SummaryForm from './pages/summary/SummaryForm';
+import Options from '../src/pages/entry/Options';
 
 function App() {
   return (
     <div className='App'>
-      <SummaryForm />
+      <Options optionType={'scoops'} />
+      {/* <SummaryForm /> */}
     </div>
   );
 }
