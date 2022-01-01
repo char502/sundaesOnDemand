@@ -35,12 +35,7 @@ function SummaryForm() {
             }}
           />
         </Form.Group>
-        <Button
-          variant='primary'
-          type='submit'
-          disabled={!tcChecked}
-          /* onClick={() => console.log('confirm button clicked')} */
-        >
+        <Button variant='primary' type='submit' disabled={!tcChecked}>
           Confirm order
         </Button>
       </Form>
