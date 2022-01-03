@@ -33,7 +33,11 @@ function Options({ optionType }) {
 
   console.log(optionItems);
 
-  return <Row>{optionItems}</Row>;
+  return (
+    <div>
+      <Row>{optionItems}</Row>
+    </div>
+  );
 }
 
 export default Options;

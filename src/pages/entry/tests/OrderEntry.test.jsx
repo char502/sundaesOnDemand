@@ -21,9 +21,9 @@ test('handles error for scoops and toppings routes', async () => {
   // need waitFor to correct a failing test
   // findAllByRole was only returning the first 'get', not waiting for the second
   // then moving to 'expect(alerts).toHaveLength(2)'
-  // which was failing (as the test expected 2 items and was only getting 1)
+  // This was was then failing (as the test expected 2 items and was only getting 1)
   // waitFor solves this problem
-  // also had to remove 'name' as second argument from role
+  // Also had to remove 'name' as second argument from role
 
   await waitFor(async () => {
     const alerts = await screen.findAllByRole('alert');
