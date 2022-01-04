@@ -1,6 +1,6 @@
 import Col from 'react-bootstrap/Col';
 
-function ToppingOption({ name, imagePath }) {
+function ToppingOption({ name, imagePath, updateItemCount }) {
   return (
     <Col xs={6} sm={6} md={2} lg={2} style={{ textAlign: 'center' }}>
       <div>
