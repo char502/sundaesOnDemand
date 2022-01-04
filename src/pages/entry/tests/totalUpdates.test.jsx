@@ -1,9 +1,10 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen } from '../../../test-utils/testing-library-utils';
 import userEvent from '@testing-library/user-event';
-
 import Options from '../Options';
 
 test('update scoop subtotal when scoops change', async () => {
+  // The wrapper is the context provider used in this app (could also be a redux provider, a router)
+  // Anything you want to wrap your component in, in order to access whatever it needs for the tests
   render(<Options optionType={'scoops'} />);
 
   // make sure total starts out £0
@@ -26,12 +27,12 @@ test('update scoop subtotal when scoops change', async () => {
   expect(scoopsSubtotal).toHaveTextContent('2.00');
 
   // update chocolate scoops to 2 then check subtotal again
-  const chocolateInput = await screen.findByRole('spinButton', {
+  const chocolateInput = await screen.findByRole('spinbutton', {
     name: 'Chocolate',
   });
 
   userEvent.clear(chocolateInput);
   userEvent.type(chocolateInput, '2');
 
-  expect(chocolateInput).toHaveTextContent('6.00');
+  expect(scoopsSubtotal).toHaveTextContent('6.00');
 });
