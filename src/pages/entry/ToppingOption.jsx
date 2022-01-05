@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+import { Form } from 'react-bootstrap';
 import Col from 'react-bootstrap/Col';
 
 function ToppingOption({ name, imagePath, updateItemCount }) {
@@ -10,7 +12,18 @@ function ToppingOption({ name, imagePath, updateItemCount }) {
           alt={`${name} topping`}
         />
       </div>
-      <div>{name}</div>
+
+      <Form.Group
+        controlId={`${name}-topping-checkbox`}
+        /* as={Row}
+        style={{ marginTop: '10px' }} */
+      >
+        <Form.Check
+          type='checkbox'
+          onChange={e => updateItemCount(name, e.target.checked ? 1 : 0)}
+          label={name}
+        />
+      </Form.Group>
     </Col>
   );
 }
