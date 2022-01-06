@@ -50,14 +50,6 @@ test('update toppings subtotal when toppings change', async () => {
 
   expect(toppingsSubtotal).toHaveTextContent('0.00');
 
-  // ===========================================================
-
-  // const allCheckboxes = await screen.findAllByRole('checkbox');
-
-  // const checkboxText = allCheckboxes.map(box => box.label);
-
-  // ===========================================================
-
   const MmsCheckbox = await screen.findByRole('checkbox', {
     name: 'M&Ms',
   });
@@ -83,20 +75,17 @@ test('update toppings subtotal when toppings change', async () => {
 });
 
 describe('grand total', () => {
-  test('grand total starts at £0.00', () => {
-    render(<OrderEntry />);
-    const grandTotal = screen.getByRole('heading', {
-      name: /Grand total: \$/,
-    });
-    expect(grandTotal).toHaveTextContent('0.00');
-  });
-
   test('grand total updates properly if scoop is added first', async () => {
     render(<OrderEntry />);
 
     const grandTotal = screen.getByRole('heading', {
-      name: /grand total: \$/i,
+      name: /grand total: £/i,
     });
+
+    // check that the grand total starts out at 0
+    // can't put it in it's own test as affected by the axios calls
+    // easier just to put it here
+    expect(grandTotal).toHaveTextContent('0.00');
 
     // update vanilla scoops and check grand total
     const vanillaInput = await screen.findByRole('spinbutton', {
@@ -128,7 +117,7 @@ describe('grand total', () => {
     userEvent.click(MmsCheckbox);
 
     const grandTotal = screen.getByRole('heading', {
-      name: /grand total: \$/i,
+      name: /grand total: £/i,
     });
 
     expect(grandTotal).toHaveTextContent('1.50');
@@ -162,7 +151,7 @@ describe('grand total', () => {
     userEvent.type(vanillaInput, '1');
 
     const grandTotal = screen.getByRole('heading', {
-      name: /grand total: \$/i,
+      name: /grand total: £/i,
     });
 
     expect(grandTotal).toHaveTextContent('3.50');

@@ -12,11 +12,7 @@ function ToppingOption({ name, imagePath, updateItemCount }) {
         />
       </div>
 
-      <Form.Group
-        controlId={`${name}-topping-checkbox`}
-        /* as={Row}
-        style={{ marginTop: '10px' }} */
-      >
+      <Form.Group controlId={`${name}-topping-checkbox`}>
         <Form.Check
           type='checkbox'
           onChange={e => updateItemCount(name, e.target.checked ? 1 : 0)}

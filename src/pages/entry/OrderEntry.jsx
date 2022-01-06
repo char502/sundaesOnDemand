@@ -5,8 +5,6 @@ import { useOrderDetails } from '../../contexts/OrderDetails';
 function OrderEntry() {
   const [orderDetails] = useOrderDetails();
 
-  // console.log(orderDetails.totals.grandTotal);
-
   return (
     <div>
       <h1>Design Your Sundae</h1>
