@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import App from '../App';
@@ -82,7 +82,19 @@ test('order phases for happy path', async () => {
   // confirm order number on confirmation page
   // =======================================================
 
+  //   screen.findBy;
+
+  await waitFor(async () => {
+    const orderNumber = await screen.findByRole('heading', {
+      name: /Your order number is:/,
+    });
+
+    expect(orderNumber).toHaveTextContent(123455676);
+  });
+
+  // =======================================================
   // click "new order" button on confirmation page
+  // =======================================================
 
   // check that scoops and toppings subtotals have been reset
 
